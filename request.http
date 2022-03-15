@@ -1,0 +1,63 @@
+###
+POST http://localhost:3000/api/v1/invoices/invoice HTTP/1.1
+Content-Type: application/json
+
+{
+"DueDate": "Fecha actual: Date.now()",
+"DocNumber": "1053811422",
+"Status": "Payable",
+"Line": [
+{
+"Amount": 500,
+"DetailType": "ExpenseDetail",
+"ExpenseDetail": {
+"Customer": {
+"value": "ABC123",
+"name": "Sample Customer",
+"Ref": {
+"value": "DEF234",
+"name": "Sample Construction"
+}
+},
+"Account": {
+"value": "EFG345",
+"name": "Fuel"
+},
+"LineStatus": "Billable"
+}
+}
+],
+"Vendor": {
+"value": "GHI456",
+"name": "Sample Bank"
+},
+"TotalAmt": 1990.19
+}
+
+###
+GET http://localhost:3000/api/v1/invoices HTTP/1.1
+
+###
+GET http://localhost:3000/api/v1/invoices/622f7c4b9fe3217ffa6f627a HTTP/1.1
+
+###
+PUT http://localhost:3000/api/v1/invoices/622f7c4b9fe3217ffa6f627a HTTP/1.1
+Content-Type: application/json
+
+{
+    "Line": [
+        {
+            "ExpenseDetail": {
+                "Customer": {
+                    "value": "Jojhan"
+                }
+            }
+        }
+    ]
+}
+
+###
+DELETE  http://localhost:3000/api/v1/invoices/622f7c4b9fe3217ffa6f627a HTTP/1.1
+
+###
+GET http://localhost:3000/api/v1/invoices/DEF234 HTTP/1.1
